@@ -1,7 +1,7 @@
 // dependencies
 const url = require('url');
-const {StringDecoder} = require('string_decoder');
-const routes = require('./routes');
+const { StringDecoder } = require('string_decoder');
+const routes = require('../routes');
 const { notFoundHandler } = require('../hadlers/routehandlers/notFoundHandler');
 
 // module scaffolding
@@ -27,12 +27,12 @@ handler.handleReqRes = (req, res) => {
         headersObj
     }
 
-    const chosenHandler = routes[trimmedPath] ? routes[trimmedPath]: notFoundHandler;
+    const chosenHandler = routes[trimmedPath] ? routes[trimmedPath] : notFoundHandler;
 
     chosenHandler(requestProperties, (statusCode, payload) => {
-        statusCode = typeof(statusCode) === 'number' ? statusCode : 500;
-        payload = typeof(payload) === 'object' ? payload : {};
-        
+        statusCode = typeof (statusCode) === 'number' ? statusCode : 500;
+        payload = typeof (payload) === 'object' ? payload : {};
+
         const payloadString = JSON.stringify(payload);
 
         res.writeHead(statusCode);
