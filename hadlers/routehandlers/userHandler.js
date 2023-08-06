@@ -7,7 +7,6 @@ const tokenHandler = require('./tokenHandler');
 const handler = {};
 
 // handler
-
 handler.userHandler = (requestProperties, callback) => {
     const acceptedMethods = ['get', 'post', 'put', 'delete'];
     if (acceptedMethods.indexOf(requestProperties.method) > -1) {
